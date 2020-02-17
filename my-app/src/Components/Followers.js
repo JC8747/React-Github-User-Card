@@ -2,15 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 const FollowerStyle = styled.div`
-    width = 80%;
-    margin = 0 auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background: #00f0e4;
+    background: #00f0e4
 `;
 const FollowerContainer = styled.div`
-    background: #f000d4;
+    width: 40%;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    background: #ff00dd;
+
+[type ="img"]{
+    width: 40%;
+    border: 10px solid red;
+}
 `;
 
 const Followers = props => {

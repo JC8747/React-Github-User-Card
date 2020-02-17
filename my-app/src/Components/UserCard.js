@@ -4,10 +4,16 @@ import Followers from "./Followers";
 import styled from "styled-components";
 
 const UserStyle = styled.div`
-
+    background: #00f0e4;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
 `;
 const UserContainer = styled.div`
-
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: #00f0e4;
 `;
 
 const UserCard = props => {
