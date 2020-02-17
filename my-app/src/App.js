@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import UserCard from './Components/UserCard';
+import styled from 'styled-components';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const NavStyled = styled.h1`
+
+`
+const MainDiv = styled.div`
+  text-align: center;
+`
+const NavBar = styled.div`
+  border: 1px solid black;
+  background-color: #048C8C;
+`
+class App extends React.Component {
+  state = {
+    user: "",
+    followers: []
+  }
+
+  componentDidMount() {
+    axios.get("https://api.github.com/users/JC8747")
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          user: response.data
+        })
+      })
+      .catch(error => {
+        console.log("Error, not found!", error)
+      })
+    axios.get("https://api.github.com/users/JC8747/followers")
+      .then(response => {
+        console.log(response.data)
+        this.setState({ followers: response.data })
+      })
+  }
+
+  render() {
+    return (
+      <MainDiv>
+        <NavBar>
+        <NavStyled>My Github Info</NavStyled>
+        </NavBar>
+        <UserCard user={this.state.user} followers={this.state.followers} />
+      </MainDiv>
+    );
+  }
 }
 
 export default App;
